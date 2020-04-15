@@ -1,17 +1,19 @@
-var football_players = [
-    'messi',
-    'ronaldo',
-    'bissakka',
-    'bruno',
-    'adebayor',
-    'tevez',
-    'nasri',
-    'fabregas'
+var my_dudes = [
+    'Chinmayi',
+    'Kamath',
+    'Accamma',
+    'Nithin',
+    'Shailesh',
+    'Bhavin',
+    'Nataraja',
+    'Srihari',
+    'Raghavendra',
+    'Chinmai',
+    'Sherrie'
 ];
 
 function randomWord(){
-    console.log(football_players[Math.floor(Math.random() * football_players.length)]);
-    return football_players[Math.floor(Math.random() * football_players.length)];
+    return my_dudes[Math.floor(Math.random() * my_dudes.length)].toLowerCase();
 }
 
 export {randomWord};

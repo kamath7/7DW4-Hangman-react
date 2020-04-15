@@ -50,6 +50,7 @@ class Hangman extends Component {
             answer: randomWord()
         });
     }
+
     render() {
         const gameOver = this.state.mistake >= this.props.maxWrong;
         const isWinner = this.guessedWord().join("") === this.state.answer;
@@ -70,14 +71,15 @@ class Hangman extends Component {
 
                 </div>
                 <div className="text-center">
-                    <p>Guess the football player</p>
-                    <p>
+                    <p className="guess-text">Guess the dude</p>
+                    <p className="guess-word">
                         {!gameOver ? this.guessedWord() : this.state.answer}
                     </p>
                     <p>
                         {gameStat}
                     </p>
                     <button className="btn btn-info" onClick={this.resetButton}>Reset</button>
+
                 </div>
             </div>
         )
@@ -85,3 +87,17 @@ class Hangman extends Component {
 }
 
 export default Hangman;
+
+/*Implementation of Hint Button
+    handleHint = ()=>{
+        window.alert("Hint taken");
+        this.setState(prevState=>{
+            return{
+                ...prevState,
+                mistake: prevState.mistake + 1
+            }
+        });
+    }
+    <button className="btn btn-danger" onClick={this.handleHint}>Hint</button>
+
+*/
