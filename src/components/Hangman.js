@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Hangman.css';
-import { randomWord } from './Words';
+import { randomWord, generateHint, generateDescription } from './Words';
 
 import step0 from './images/0.jpg';
 import step1 from './images/1.jpg';
@@ -50,7 +50,15 @@ class Hangman extends Component {
             answer: randomWord()
         });
     }
-
+    handleHint = ()=>{
+        window.alert(generateHint(this.state.answer));
+        this.setState(prevState=>{
+            return{
+                ...prevState,
+                mistake: prevState.mistake + 1
+            }
+        });
+    }
     render() {
         const gameOver = this.state.mistake >= this.props.maxWrong;
         const isWinner = this.guessedWord().join("") === this.state.answer;
@@ -72,12 +80,15 @@ class Hangman extends Component {
                 </div>
                 <div className="text-center">
                     <p className="guess-text">Guess the dude</p>
+                    <p className="guess-description">{generateDescription(this.state.answer)}</p>
                     <p className="guess-word">
                         {!gameOver ? this.guessedWord() : this.state.answer}
                     </p>
                     <p>
                         {gameStat}
                     </p>
+                    <button className={!gameOver? "btn btn-danger" :"btn btn-danger disabled" } disabled={gameOver || isWinner}onClick={this.handleHint}>Hint</button>
+
                     <button className="btn btn-info" onClick={this.resetButton}>Reset</button>
 
                 </div>
